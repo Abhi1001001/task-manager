@@ -22,6 +22,7 @@ export default function App() {
         console.log(response.data.todos);
         setLoading(false);
         setTaskCount(response.data.todos.length);
+        alert("Note: All operation will not perform it into the server. It will simulate only and will return response");
       })
       .catch((error) => {
         alert(`${error.message} occurred please try again`);
@@ -46,7 +47,7 @@ export default function App() {
     await axios
       .post(`https://dummyjson.com/todos/add`, newTask)
       .then((response) => {
-        alert("data added successfully");
+        alert(`data added successfully with ${response.data.id} id`);
         setNewTask({ todo: "", completed: false, userId: 1 });
       })
       .catch((error) => {
@@ -55,8 +56,6 @@ export default function App() {
   };
 
   const deleteTask = async (id) => {
-    console.log(id);
-
     await axios
       .delete(`https://dummyjson.com/todos/${id}`)
       .then((response) => {
