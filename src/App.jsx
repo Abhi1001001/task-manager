@@ -85,7 +85,7 @@ export default function App() {
   }, []);
 
   if (loading) {
-    return <h1 className="w-screen m-auto">Loading...</h1>;
+    return <h1 className="text-2xl text-center mt-20">Loading...</h1>;
   }
 
   return (
