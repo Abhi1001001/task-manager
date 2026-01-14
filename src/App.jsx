@@ -30,11 +30,13 @@ export default function App() {
   };
 
   const updateTask = async (id) => {
+    setLoading(true);
     await axios
       .put(`https://jsonplaceholder.typicode.com/users/${id}`, newTask)
       .then((response) => {
         alert("data updated successfully");
         setEditingId(null);
+        setLoading(false);
       })
       .catch((error) => {
         alert(`${error.message} occurred please try again`);
@@ -42,7 +44,6 @@ export default function App() {
   };
 
   const addTask = async (e) => {
-    console.log(newTask);
     e.preventDefault();
     await axios
       .post(`https://dummyjson.com/todos/add`, newTask)
@@ -56,10 +57,12 @@ export default function App() {
   };
 
   const deleteTask = async (id) => {
+    setLoading(true);
     await axios
       .delete(`https://dummyjson.com/todos/${id}`)
       .then((response) => {
         alert("data deleted successfully");
+        setLoading(false);
       })
       .catch((error) => {
         alert(`${error.message} occurred please try again`);
